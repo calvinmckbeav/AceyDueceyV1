@@ -7,4 +7,9 @@ How to Play:
       - If the first card is an ace, it's the lowest possible card
       - If the second card is an ace, it's the highest possible card
       - The hope is that that value of the next card flipped will be between the first two values
-      - You choose how much to bet, you can select to do none to skip
+      - You choose how much to bet, you can select to do none to skip your turn
+      - If the third card is between the first two, you make your bet in profit, if it's outside of it you lose your bet
+      - If the third card is the same as one of the first two, you lose double your bet
+      - If the first two cards are the same, you guess higher or lower, if the third card is the same, you lose triple, besides that you just win or lose your bet
+  3. The two computers play their turns, they're betting amount is determined by simple logic dependent on the difference between first two cards
+  4. Game continues like this
