@@ -12,4 +12,4 @@ How to Play:
       - If the third card is the same as one of the first two, you lose double your bet
       - If the first two cards are the same, you guess higher or lower, if the third card is the same, you lose triple, besides that you just win or lose your bet
   3. The two computers play their turns, they're betting amount is determined by simple logic dependent on the difference between first two cards
-  4. Game continues like this
+  4. The game continues like this until either both computers run out of money or the user does
