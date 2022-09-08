@@ -36,7 +36,7 @@ user_stack = starting_amount
 class Player:
   def __init__(self, name, cash):
     self.name = name
-    self.cash = 100
+    self.cash = cash
 
   def take_ante(self):
     if self.cash>= 1:
@@ -56,6 +56,8 @@ def collect_antes(player1, player2):
 def show_information():
   print("--------------------------------------")
   print("You currently have " + str(user_stack) + " dollars")
+  print("Comp1 has " + str(comp1.cash) + " dollars")
+  print("Comp2 has " + str(comp2.cash) + " dollars")
   print("There is " + str(pot) + " dollars in the pot")
   print("--------------------------------------")
 
@@ -67,8 +69,9 @@ def user_plays():
   global user_stack
   #reshuffling deck if needed
   if len(back_up) < 4:
-    back_up = deck
+    back_up[:] = deck
     print("**** Time to reshuffle the deck ****")
+    print(len(back_up))
     
   #dealing the first and second cards
   first = back_up[random.randint(0, len(back_up)-1)]
@@ -180,8 +183,9 @@ def comp_plays(computer):
   global pot
   #reshuffling deck if needed
   if len(back_up) < 4:
-    back_up = deck
+    back_up[:] = deck
     print("**** Time to reshuffle the deck ****")
+    print(len(back_up))
     
     
   #dealing the first and second cards
@@ -317,7 +321,7 @@ def play():
   print("First, let's collect the antes")
   collect_antes(comp1, comp2)
 
-  while(user_stack>0):
+  while(user_stack>0 and (comp1.cash>0 or comp2.cash>0)):
     if pot==0:
       print("The pot's run empty, time to collect antes again")
       collect_antes(comp1, comp2)
@@ -332,14 +336,14 @@ def play():
       collect_antes(comp1, comp2)
     show_information()
 
-    if comp1.cash > 1:
+    if comp1.cash >= 1:
       comp_plays(comp1)
 
     if pot==0:
       print("The pot's run empty, time to collect antes again")
       collect_antes(comp1, comp2)
 
-    if comp2.cash > 1:
+    if comp2.cash >= 1:
       comp_plays(comp2)
 
     if pot==0:
@@ -347,7 +351,10 @@ def play():
       collect_antes(comp1, comp2)
 
   show_information()
-  print("Sorry, you lost all your money :(") 
+  if user_stack >0:
+    print("Sorry, you lost all your money :(") 
+  else:
+    print("Nice job! The computers are all out of money so you get it all!!!")
   
 
 play() 
